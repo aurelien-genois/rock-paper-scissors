@@ -6,16 +6,26 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <main id="gameContainer">
+        <div id="points">
+            <p id="playerPoints"></p>
+            <p id="computerPoints"></p>
+        </div>
+        <div id="buttons">
+            <button class="button" data-option="paper">Paper</button>
+            <button class="button" data-option="rock">Rock</button>
+            <button class="button" data-option="scissors">Scissors</button>
+        </div>
+        <div id="declaration">
+            <p id="declarationText"></p>
+            <p id="winnerText"></p>
+        </div>
+    </main>
     <script>
-        /* the user is asked to choose one option among three options (scissors, rock, paper) => Input
-        a comparison is made between his choice and a random option (choosed by the computer) => Calculation
-        just after the choice, a declaration informs if the user win of lose the game => Output */
-
-
-        function computerPlay() {
+        function getComputerPlay() {
             let computerChoice;
-            let getRandom3Id = Math.floor(Math.random() * Math.floor(3)); 
-            switch (getRandom3Id) {
+            let Random3Id = Math.floor(Math.random() * Math.floor(3)); 
+            switch (Random3Id) {
                 case 0 :
                     computerChoice = "Rock";
                     break;
@@ -28,57 +38,50 @@
             }
             return computerChoice;
         }
+        function playRound(playerSelection, computerSelection) { 
+            const playerChoice = playerSelection.toLowerCase(); // case insensitive
+            const computerChoice = computerSelection.toLowerCase(); // case insensitive
+            let declaration;
+            if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
+                if ((playerChoice === "rock" && computerChoice === "paper") ||
+                    (playerChoice === "scissors" && computerChoice === "rock") ||
+                    (playerChoice === "paper" && computerChoice === "scissors")) {
+                        declaration = "You lose this round! His " + computerChoice + " is better than your " + playerChoice;
+                        playerLose ++;
+                } else if (playerChoice === computerChoice) {
+                    declaration = "Equality ! His " + computerChoice + " is equal to your " + playerChoice;
+                    equality ++;
+                } else {
+                    declaration = "You win this round! Your " + playerChoice + " is better than his " + computerChoice;
+                    playerWin ++;
+                }
+            }
+            return declaration; // string that declares the winner
+        }
+        function playTheGame(e) {
+            const computerSelection = getComputerPlay(); // get the computer random choice
+                declarationText.textContent = playRound(e.target.textContent, getComputerPlay()); //return a declaration
+                playerPoints.textContent = playerWin;
+                computerPoints.textContent = playerLose;
+                if (playerLose == 5) {
+                    winner.textContent = "Computer win the game! You win " + playerWin + " times and lose " + playerLose + " times and there was " + equality + " equality";
+                } else if (playerWin == 5) {
+                    winner.textContent = "You win the game! You win " + playerWin + " times and lose " + playerLose + " times and there was " + equality + " equality";
+                }
+        }
+
+        const options = document.querySelectorAll(".button");
+        const declaration = document.querySelector('#declarationText');
+        const winner = document.querySelector('#winnerText');
+        const playerPoints = document.querySelector('#playerPoints');
+        const computerPoints = document.querySelector('#computerPoints');
 
         let playerWin = 0;
         let playerLose = 0;
         let equality = 0;
-        let errors = 0;
-        function game() {
-            for (i = 0; i < 5; i++) {
 
-                // get the user choice
-                const playerSelection = prompt("Write scissors, paper or Rock !");
-                // get the computer random choice
-                const computerSelection = computerPlay();
-                // compare the two choices
-                function playRound(playerSelection, computerSelection) { // function case insensitive
-                    const playerChoice = playerSelection.toLowerCase();
-                    const computerChoice = computerSelection.toLowerCase();
-                    let declaration;
-                    if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
-                        if ((playerChoice === "rock" && computerChoice === "paper") ||
-                            (playerChoice === "scissors" && computerChoice === "rock") ||
-                            (playerChoice === "paper" && computerChoice === "scissors")) {
-                                declaration = "You lose this round! His " + computerChoice + " is better than your " + playerChoice;
-                                playerLose ++;
-                        } else if (playerChoice === computerChoice) {
-                            declaration = "Equality ! His " + computerChoice + " is equal to your " + playerChoice;
-                            equality ++;
-                        } else {
-                            declaration = "You win this round! Your " + playerChoice + " is better than his " + computerChoice;
-                            playerWin ++;
-                        }
-                    } else {
-                        declaration = "Wrong writing, try again!";
-                        errors ++;
-                        i --;
-                    }
 
-                    return declaration; // string that declares the winner
-                }
-                // display a declaration informing the win or lose
-                console.log(playRound(playerSelection, computerSelection));
-            };
-        }
-        console.log(game());
-        if (playerWin < playerLose) {
-            console.log("You lose the game! You win " + playerWin + " times and lose " + playerLose + " times and there was " + equality + " equality and " + errors + " errors");
-        } else if (playerWin === playerLose) {
-            console.log("Equality! You win " + playerWin + " times and lose " + playerLose + " times and there was " + equality + " equality and " + errors + " errors");
-        } else {
-            console.log("You win the game! You win " + playerWin + " times and lose " + playerLose + " times and there was " + equality + " equality and " + errors + " errors");
-        }
-
+        options.forEach(option => option.addEventListener('click', playTheGame));   
     </script>
 </body>
 </html>
