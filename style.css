@@ -1,0 +1,117 @@
+body {
+    background: rgb(56, 20, 13);
+}
+h1 {
+    text-align: center;
+    color: gold;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+#gameContainer {
+    width: 80vw;
+    max-width: 500px;
+    min-width: 100px;
+    background: darkgoldenrod;
+    border: 3px solid maroon;
+    border-radius: 15px;
+    margin: 30px auto;
+    padding: 15px;
+}
+#playersLabel {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-row: 1fr;
+    margin: 10px auto 0 auto;
+    font-weight: bold;
+}
+#you {
+    grid-column: 1;
+    text-align: left;
+}
+#roboto {
+    grid-column: 3;
+    text-align: right;
+}
+.icons {
+    grid-column: 2;
+    margin: auto auto;
+    display: flex;
+    justify-content: space-around;
+}
+.icon {
+    background-color: rgb(112, 57, 9);
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border: 2px solid rgb(78, 17, 9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.handIcon {
+    width: 30px;
+    height: 30px;
+}
+#buttons, #points {
+    display: flex;
+}
+#points {
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0 auto 20px auto;
+    white-space: pre-wrap;
+}
+.point {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(112, 57, 9);
+    color: gold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#declarationText {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 16px;
+    width: 400px;
+    color: rgb(4, 105, 0);
+    margin: auto 10px;
+    text-align: center;
+    line-height: 1em;
+}
+#declaration {
+    height: 100px;
+    background-color: goldenrod;
+    color: rgb(78, 17, 9);
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    white-space: pre-wrap;
+}
+#buttons {
+    justify-content: space-evenly;
+}
+.button {
+    background: sienna;
+    border: 5px outset saddlebrown;
+}
+.button:hover {
+    background: rgb(194, 106, 66);
+    border: 5px outset rgb(163, 88, 34);
+}
+.button:focus {
+    background: rgb(124, 63, 35);
+    border: 5px outset rgb(97, 49, 15);
+}
+.disabledButton {
+    background: rgb(95, 95, 95);
+    border: 5px outset rgb(77, 77, 77);
+}
