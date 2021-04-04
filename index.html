@@ -9,33 +9,50 @@
   <body>
     <header>
       <h1>Rock Paper Scissors!</h1>
+      <p id="desc">Help Fofo to beat her greatest ennemy Roboto!</p>
     </header>
     <main id="game-container">
-      <div id="declaration">
-        <p id="winner-text">Choose a option</p>
-      </div>
-      <div id="players-label">
-        <p id="you">You</p>
-        <div class="hands">
+      <div id="game-board">
+        <div id="player-profile" class="players-profiles">
+          <div class="img-container">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKfOkYJpyBUWErqt_BDhWT2P9Uu8IQp-MbQg&usqp=CAU"
+              alt="player picture"
+              id="player-picture"
+            />
+          </div>
+          <p id="player-name">Fofo</p>
+          <div class="point">
+            <p id="player-points">0</p>
+          </div>
+        </div>
+        <div id="game-hands">
           <div id="player-hand" class="hand-box"></div>
           <div id="roboto-hand" class="hand-box"></div>
+          <div id="winner-declaration">
+            <p id="winner-text">Choose a option:</p>
+            <button id="new-game-btn">Play again!</button>
+          </div>
         </div>
-        <p id="roboto">Roboto</p>
-      </div>
-      <div id="points">
-        <div class="point">
-          <p id="player-points">0</p>
-        </div>
-        <p id="declaration-text"></p>
-        <div class="point">
-          <p id="computer-points">0</p>
+        <div id="roboto-profile" class="players-profiles">
+          <div class="img-container">
+            <img
+              src="https://i.pinimg.com/originals/3e/88/02/3e8802642dcacbf09785f8cf6334da1c.jpg"
+              alt="roboto picture"
+              id="roboto-picture"
+            />
+          </div>
+          <p id="roboto-name">Roboto</p>
+          <div class="point">
+            <p id="roboto-points">0</p>
+          </div>
         </div>
       </div>
       <div id="buttons">
         <button class="button" data-option="rock">
           <svg
             id="rock"
-            class="button-icon"
+            class="button-icons icons"
             viewBox="0 -50 512 602"
             xmlns="http://www.w3.org/2000/svg"
             data-name="Layer 1"
@@ -112,7 +129,7 @@
           <svg
             version="1.1"
             id="paper"
-            class="button-icon"
+            class="button-icons icons"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             x="0px"
@@ -143,7 +160,7 @@
         <button class="button" data-option="scissors">
           <svg
             id="scissors"
-            class="button-icon"
+            class="button-icons icons"
             enable-background="new 0 0 512 512"
             viewBox="0 -40 512 602"
             xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +194,83 @@
           </svg>
         </button>
       </div>
-      <button id="new-game-btn">Play again!</button>
+
+      <!-- rounds results -->
+      <div id="round-result">
+        <p id="round-result-text"></p>
+        <table id="rounds-table">
+          <thead>
+            <tr>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+              <th>6</th>
+              <th>7</th>
+              <th>8</th>
+              <th>9</th>
+              <th>10</th>
+              <th>11</th>
+              <th>12</th>
+              <th>13</th>
+              <th>14</th>
+              <th>15</th>
+              <th>16</th>
+              <th>17</th>
+              <th>18</th>
+              <th>19</th>
+              <th>20</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="player-plays">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr id="roboto-plays">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </main>
     <script type="text/javascript" src="logic.js"></script>
   </body>

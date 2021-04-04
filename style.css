@@ -1,65 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
 
 body {
-  background: rgb(56, 20, 13);
+  background-image: linear-gradient(
+    to bottom,
+    rgb(196, 87, 44),
+    rgb(109, 51, 28)
+  );
+  height: 100vh;
   font-family: 'Dosis', sans-serif;
 }
 h1 {
   text-align: center;
-  color: gold;
+  margin-top: 30px;
+  color: rgb(0, 0, 0);
   font-weight: bold;
 }
-
+#desc {
+  text-align: center;
+  font-style: italic;
+  color: rgb(240, 185, 47);
+}
 #game-container {
-  width: 80vw;
-  max-width: 500px;
-  min-width: 100px;
-  background: darkgoldenrod;
-  border: 3px solid maroon;
-  border-radius: 15px;
-  margin: 30px auto;
-  padding: 15px;
+  margin: 0px auto;
+  width: min-content;
 }
-#players-label {
+
+/* game board */
+#game-board {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-row: 1fr;
-  margin: 10px auto 0 auto;
+  grid-template-columns: auto 1fr auto;
+  margin: auto;
+  padding: 20px;
   font-weight: bold;
 }
-
-#you {
-  grid-column: 1;
-  text-align: left;
-}
-#roboto {
-  grid-column: 3;
-  text-align: right;
-}
-
-.hands {
-  grid-column: 2;
-  margin: auto auto;
+.players-profiles {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
 }
-.hand-box {
+.players-profiles .img-container {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 15px;
+  border: transparent solid 6px;
+}
+@keyframes winner-highlight {
+  from {
+    border: rgb(48, 163, 13) solid 6px;
+    box-shadow: 0 0 10px rgb(48, 163, 13);
+  }
+  to {
+    border: transparent solid 6px;
+    box-shadow: 0 0 10px transparent;
+  }
+}
+.players-profiles .winner-img {
+  animation-name: winner-highlight;
+  animation-duration: 1s;
+}
+.players-profiles img {
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+  object-position: 0 10px;
+  transform: scale(1.4, 1.4);
+}
+.players-profiles p {
+  margin: 10px 0;
+}
+#player-profile {
+  grid-column: 1;
+}
+#roboto-profile {
+  grid-column: 3;
+}
+.point {
   width: 40px;
   height: 40px;
-  margin: 5px;
+  border-radius: 50%;
+  background-color: rgb(0, 0, 0);
+  color: gold;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#roboto-hand {
-  background-color: rgb(9, 71, 112);
-  border: 2px solid rgb(9, 73, 78);
+.point.winner-point {
+  background-color: rgb(48, 163, 13);
 }
-#player-hand {
-  background-color: rgb(112, 57, 9);
-  border: 2px solid rgb(78, 17, 9);
+#game-hands {
+  grid-column: 2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: inset gray 5px;
+  margin: 0 10px;
+  background-image: linear-gradient(
+    120deg,
+    rgb(211, 71, 16) 40%,
+    rgb(133, 223, 203) 60%
+  );
 }
-
+.hand-box {
+  width: 100px;
+  height: 100px;
+}
 @keyframes apparition {
   from {
     transform: scale(0, 0);
@@ -68,108 +118,112 @@ h1 {
     transform: scale(1, 1);
   }
 }
-
 .icons {
-  /* width: 30px;
-  height: 30px; */
+  width: inherit;
+  height: inherit;
   transform-origin: center;
   animation-duration: 0.5s;
   animation-name: apparition;
   /* animation-timing-function don't work with transition, use transition-timing-function instead */
   animation-timing-function: cubic-bezier(0.34, 0.88, 0.8, 1.44);
-}
-#buttons,
-#points {
-  display: flex;
-}
-
-.button-icon {
-  object-fit: fill;
-  width: 130px;
-  height: 130px;
   /* shadow for <SVG> & transparent PNG */
   -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
   filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
-  transform: scale(1, 1);
-  transition: 0.2s;
-  transition-timing-function: ease-out;
-}
-.button-icon:hover {
-  transform: scale(1.2, 1.2);
-}
-.disabled-button .button-icon:hover {
-  transform: scale(1, 1);
 }
 
-#points {
-  justify-content: space-between;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 0 auto 20px auto;
-  white-space: pre-wrap;
-}
-.point {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: rgb(112, 57, 9);
-  color: gold;
+/* display result */
+#winner-declaration {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-}
-
-#declaration-text {
-  opacity: 0;
-  transition: opacity 0s;
-  font-size: 16px;
-  width: 400px;
-  color: rgb(78, 17, 9);
-  margin: auto 10px;
-  text-align: center;
-  line-height: 1em;
-}
-#declaration-text.visible {
-  transition: opacity 0.5s;
-  opacity: 100;
-}
-#declaration {
-  height: 100px;
-  background-color: goldenrod;
+  position: absolute;
+  height: max-content;
+  width: max-content;
+  background-color: rgb(240, 185, 47);
   color: rgb(78, 17, 9);
   font-weight: bold;
-  display: flex;
-  font-size: 20px;
-  justify-content: center;
-  align-items: center;
+  font-size: 12px;
   text-align: center;
   padding: 10px;
   white-space: pre-wrap;
-}
-#buttons {
-  justify-content: space-evenly;
-}
-.button {
-  background: sienna;
-  border: 5px outset saddlebrown;
-}
-.button:hover {
-  background: rgb(194, 106, 66);
-  border: 5px outset rgb(163, 88, 34);
-}
-.button:focus {
-  background: rgb(124, 63, 35);
-  border: 5px outset rgb(97, 49, 15);
-}
-.disabled-button {
-  background: rgb(95, 95, 95);
-  border: 5px outset rgb(77, 77, 77);
 }
 #new-game-btn {
   margin: 10px auto 0 auto;
   display: block;
   opacity: 0;
+  visibility: collapse;
+  position: absolute;
 }
 #new-game-btn.visible {
-  opacity: 100 !important;
+  opacity: 100;
+  visibility: visible;
+  position: initial;
+}
+
+/* Options buttons */
+#buttons {
+  display: flex;
+  justify-content: center;
+}
+.button-icons {
+  object-fit: fill;
+  width: 50px;
+  height: 50px;
+  transform: scale(1, 1);
+  transition: 0.2s;
+  transition-timing-function: ease-out;
+}
+.button .button-icons:hover {
+  transform: scale(1.5, 1.5);
+  cursor: pointer;
+}
+.disabled-button .button-icon:hover {
+  transform: scale(1, 1);
+}
+.button,
+.disabled-button {
+  background: transparent;
+  border: none;
+  margin: 5px;
+}
+
+/* rounds result */
+#round-result {
+  margin-top: 10px;
+}
+#round-result-text {
+  opacity: 0;
+  transition: opacity 0s;
+  font-size: 12px;
+  height: 20px;
+  font-weight: bold;
+  color: rgb(230, 180, 56);
+  text-align: center;
+}
+#round-result-text.visible {
+  transition: opacity 0.2s;
+  opacity: 100;
+}
+#rounds-table {
+  border-spacing: 0;
+  width: max-content;
+  margin-top: 10px;
+}
+#rounds-table td,
+#rounds-table th {
+  border: black 1px solid;
+  width: 30px;
+  height: 30px;
+}
+#rounds-table th {
+  background-color: rgb(211, 166, 52, 0.5);
+}
+#player-plays {
+  background-color: rgb(211, 71, 16, 0.5);
+}
+#roboto-plays {
+  background-color: rgba(133, 223, 204, 0.5);
+}
+#rounds-table td.win-cell {
+  background-color: green;
 }
