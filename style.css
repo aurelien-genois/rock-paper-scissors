@@ -1,33 +1,43 @@
 * {
   margin: 0;
   padding: 0;
+  --gray-gameboard: rgb(97, 97, 97);
+  --lightgray-gameboard: #6e6e6e;
+  --orange-fofo: rgb(211, 71, 16);
+  --blue-roboto: rgb(21, 201, 162);
+  --yellow-gold: rgb(240, 185, 47);
+  --green-winner: rgb(18, 150, 6);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
 
 body {
-  background-image: linear-gradient(
-    to bottom,
-    rgb(196, 87, 44),
-    rgb(109, 51, 28)
-  );
-  height: 100vh;
+  background-image: url(https://i.pinimg.com/originals/c2/bc/a7/c2bca7dd6445461b871e1c164217b5ae.png);
+  background-size: cover;
+  background-attachment: fixed;
   font-family: 'Dosis', sans-serif;
 }
 h1 {
   text-align: center;
-  margin-top: 30px;
-  color: rgb(0, 0, 0);
+  margin: 20px 0;
+  color: var(--yellow-gold);
   font-weight: bold;
+  text-shadow: 3px 3px 4px black;
+  -webkit-text-stroke: 1px black;
 }
 #desc {
   text-align: center;
   font-style: italic;
-  color: rgb(240, 185, 47);
+  font-size: 18px;
+  color: var(--yellow-gold);
 }
 #game-container {
   margin: 0px auto;
   width: min-content;
+  padding: 20px 20px 40px 20px;
+  border-radius: 30px 30px 100px 100px/ 30px 30px 50px 50px;
+  background-color: var(--gray-gameboard);
+  border: outset var(--lightgray-gameboard) 6px;
 }
 
 /* game board */
@@ -35,28 +45,36 @@ h1 {
   display: grid;
   grid-template-columns: auto 1fr auto;
   margin: auto;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   font-weight: bold;
 }
 .players-profiles {
+  border: var(--lightgray-gameboard) 5px inset;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5px;
+}
+#player-profile {
+  background-color: var(--orange-fofo);
+}
+#roboto-profile {
+  background-color: var(--blue-roboto);
 }
 .players-profiles .img-container {
   width: 100px;
   height: 100px;
   overflow: hidden;
   border-radius: 15px;
-  border: transparent solid 6px;
+  border: black solid 6px;
 }
 @keyframes winner-highlight {
   from {
-    border: rgb(48, 163, 13) solid 6px;
-    box-shadow: 0 0 10px rgb(48, 163, 13);
+    border: var(--green-winner) solid 6px;
+    box-shadow: 0 0 10px rgb(255, 255, 255);
   }
   to {
-    border: transparent solid 6px;
+    border: black(58, 58, 58) solid 6px;
     box-shadow: 0 0 10px transparent;
   }
 }
@@ -84,26 +102,26 @@ h1 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: rgb(0, 0, 0);
-  color: gold;
+  background-color: black;
+  color: var(--yellow-gold);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .point.winner-point {
-  background-color: rgb(48, 163, 13);
+  background-color: var(--green-winner);
 }
 #game-hands {
   grid-column: 2;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: inset gray 5px;
+  border: var(--lightgray-gameboard) 5px inset;
   margin: 0 10px;
   background-image: linear-gradient(
     120deg,
-    rgb(211, 71, 16) 40%,
-    rgb(133, 223, 203) 60%
+    var(--orange-fofo) 40%,
+    var(--blue-roboto) 60%
   );
 }
 .hand-box {
@@ -127,8 +145,8 @@ h1 {
   /* animation-timing-function don't work with transition, use transition-timing-function instead */
   animation-timing-function: cubic-bezier(0.34, 0.88, 0.8, 1.44);
   /* shadow for <SVG> & transparent PNG */
-  -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
-  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+  -webkit-filter: drop-shadow(3px 3px 4px black);
+  filter: drop-shadow(3px 3px 4px black);
 }
 
 /* display result */
@@ -139,7 +157,9 @@ h1 {
   position: absolute;
   height: max-content;
   width: max-content;
-  background-color: rgb(240, 185, 47);
+  background-color: var(--yellow-gold);
+  box-shadow: 3px 3px 4px black;
+  border-radius: 10px;
   color: rgb(78, 17, 9);
   font-weight: bold;
   font-size: 12px;
@@ -163,12 +183,14 @@ h1 {
 /* Options buttons */
 #buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  width: 280px;
+  margin: auto;
 }
 .button-icons {
   object-fit: fill;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   transform: scale(1, 1);
   transition: 0.2s;
   transition-timing-function: ease-out;
@@ -194,10 +216,10 @@ h1 {
 #round-result-text {
   opacity: 0;
   transition: opacity 0s;
-  font-size: 12px;
+  font-size: 13px;
   height: 20px;
   font-weight: bold;
-  color: rgb(230, 180, 56);
+  color: var(--yellow-gold);
   text-align: center;
 }
 #round-result-text.visible {
@@ -205,6 +227,7 @@ h1 {
   opacity: 100;
 }
 #rounds-table {
+  border: var(--lightgray-gameboard) 5px inset;
   border-spacing: 0;
   width: max-content;
   margin-top: 10px;
@@ -214,16 +237,21 @@ h1 {
   border: black 1px solid;
   width: 30px;
   height: 30px;
+  box-sizing: border-box;
+}
+#rounds-table td .icons {
+  height: 24px;
+  width: 28px;
 }
 #rounds-table th {
-  background-color: rgb(211, 166, 52, 0.5);
+  background-color: var(--yellow-gold);
 }
 #player-plays {
-  background-color: rgb(211, 71, 16, 0.5);
+  background-color: var(--orange-fofo);
 }
 #roboto-plays {
-  background-color: rgba(133, 223, 204, 0.5);
+  background-color: var(--blue-roboto);
 }
 #rounds-table td.win-cell {
-  background-color: green;
+  background-color: var(--green-winner);
 }
