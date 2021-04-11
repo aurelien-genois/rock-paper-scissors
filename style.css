@@ -1,18 +1,23 @@
 * {
   margin: 0;
   padding: 0;
-  --gray-gameboard: rgb(97, 97, 97);
-  --lightgray-gameboard: #6e6e6e;
+  --gray-gameboard: rgb(105, 42, 42);
+  --lightgray-gameboard: rgb(150, 67, 67);
   --orange-fofo: rgb(211, 71, 16);
   --blue-roboto: rgb(21, 201, 162);
   --yellow-gold: rgb(240, 185, 47);
   --green-winner: rgb(18, 150, 6);
 }
+/* prevent the default focus outline on chrome */
+:focus {
+  outline: transparent none 0px;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
 
 body {
-  background-image: url(https://i.pinimg.com/originals/c2/bc/a7/c2bca7dd6445461b871e1c164217b5ae.png);
+  background-image: linear-gradient(to bottom, #ffffff3b, #ffffff3b),
+    url(https://i.pinimg.com/originals/c2/bc/a7/c2bca7dd6445461b871e1c164217b5ae.png);
   background-size: cover;
   background-attachment: fixed;
   font-family: 'Dosis', sans-serif;
@@ -33,7 +38,7 @@ h1 {
 }
 #game-container {
   margin: 0px auto;
-  width: min-content;
+  width: fit-content;
   padding: 20px 20px 40px 20px;
   border-radius: 30px 30px 100px 100px/ 30px 30px 50px 50px;
   background-color: var(--gray-gameboard);
@@ -170,12 +175,20 @@ h1 {
 #new-game-btn {
   margin: 10px auto 0 auto;
   display: block;
+  padding: 8px 10px;
+  border-radius: 5px;
+  color: whitesmoke;
+  background-color: var(--green-winner);
+  border: orange solid 1px;
   opacity: 0;
   visibility: collapse;
+  cursor: pointer;
+  font-weight: bold;
+  /* position absolute to initial to prevent popup layout */
   position: absolute;
 }
 #new-game-btn.visible {
-  opacity: 100;
+  opacity: 1;
   visibility: visible;
   position: initial;
 }
@@ -198,6 +211,16 @@ h1 {
 .button .button-icons:hover {
   transform: scale(1.5, 1.5);
   cursor: pointer;
+}
+/* for mobile, remove the animation trigger from hover */
+/* add the animation trigger to click (button:active) */
+@media (hover: none) {
+  .button .button-icons:hover {
+    transform: scale(1, 1);
+  }
+  .button:active .button-icons {
+    transform: scale(1.5, 1.5);
+  }
 }
 .disabled-button .button-icon:hover {
   transform: scale(1, 1);
@@ -224,34 +247,73 @@ h1 {
 }
 #round-result-text.visible {
   transition: opacity 0.2s;
-  opacity: 100;
+  opacity: 1;
 }
-#rounds-table {
+#rounds-tables-container {
+  display: flex;
   border: var(--lightgray-gameboard) 5px inset;
+  margin: 10px auto 0 auto;
+  width: fit-content;
+}
+.rounds-tables {
   border-spacing: 0;
   width: max-content;
-  margin-top: 10px;
 }
-#rounds-table td,
-#rounds-table th {
+.rounds-tables td,
+.rounds-tables th {
   border: black 1px solid;
   width: 30px;
   height: 30px;
   box-sizing: border-box;
 }
-#rounds-table td .icons {
+.rounds-tables td .icons {
   height: 24px;
   width: 28px;
 }
-#rounds-table th {
+.rounds-tables th {
   background-color: var(--yellow-gold);
 }
-#player-plays {
+.player-plays {
   background-color: var(--orange-fofo);
 }
-#roboto-plays {
+.roboto-plays {
   background-color: var(--blue-roboto);
 }
-#rounds-table td.win-cell {
+.rounds-tables td.win-cell {
   background-color: var(--green-winner);
+}
+
+@media (max-width: 675px) {
+  #game-container {
+    width: 90vw;
+    padding: 20px 10px 20px 10px;
+  }
+  #game-board {
+    padding: 10px 0 0 0;
+  }
+  #rounds-tables-container {
+    flex-direction: column;
+  }
+  #rounds-table2 {
+    margin-top: 5px;
+  }
+}
+@media (max-width: 550px) {
+  .players-profiles .img-container {
+    width: 50px;
+    height: 50px;
+  }
+  .players-profiles img {
+    width: inherit;
+    height: inherit;
+    object-fit: cover;
+    object-position: 0 5px;
+    transform: scale(1.4, 1.4);
+  }
+}
+@media (max-width: 450px) {
+  .hand-box {
+    width: 50px;
+    height: 50px;
+  }
 }

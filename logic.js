@@ -16,13 +16,26 @@ const getComputerPlay = () => {
 };
 
 const populateResultTable = (playerHandIcon, robotoHandIcon) => {
-  playerPlaysTds[round].append(playerHandIcon);
-  robotoPlaysTds[round].append(robotoHandIcon);
+  // divide the round result in two table for mobile
+  if (round > 9) {
+    let currentTableSlot = round - 10;
+    playerPlays2Tds[currentTableSlot].append(playerHandIcon);
+    robotoPlays2Tds[currentTableSlot].append(robotoHandIcon);
 
-  if (playerHandIcon.classList.contains('win-cell')) {
-    playerPlaysTds[round].classList.add('win-cell');
-  } else if (robotoHandIcon.classList.contains('win-cell')) {
-    robotoPlaysTds[round].classList.add('win-cell');
+    if (playerHandIcon.classList.contains('win-cell')) {
+      playerPlays2Tds[currentTableSlot].classList.add('win-cell');
+    } else if (robotoHandIcon.classList.contains('win-cell')) {
+      robotoPlays2Tds[currentTableSlot].classList.add('win-cell');
+    }
+  } else {
+    playerPlays1Tds[round].append(playerHandIcon);
+    robotoPlays1Tds[round].append(robotoHandIcon);
+
+    if (playerHandIcon.classList.contains('win-cell')) {
+      playerPlays1Tds[round].classList.add('win-cell');
+    } else if (robotoHandIcon.classList.contains('win-cell')) {
+      robotoPlays1Tds[round].classList.add('win-cell');
+    }
   }
 };
 
@@ -48,7 +61,7 @@ const playRound = (playerSelection, robotoSelection) => {
     (playerSelection === 'scissors' && robotoSelection === 'rock') ||
     (playerSelection === 'paper' && robotoSelection === 'scissors')
   ) {
-    declaration.textContent = `You lose this round!\nHis ${robotoSelection} is better than your ${playerSelection}`;
+    roundResultText.textContent = `You lose this round!\nHis ${robotoSelection} is better than your ${playerSelection}`;
     robotoPoints.parentElement.classList.add('winner-point');
     playerPoints.parentElement.classList.remove('winner-point');
     robotoPicture.classList.add('winner-img');
@@ -58,12 +71,12 @@ const playRound = (playerSelection, robotoSelection) => {
     }, 1000);
     robotoWin++;
   } else if (playerSelection === robotoSelection) {
-    declaration.textContent = `Equality!\nHis ${robotoSelection} is equal to your ${playerSelection}`;
+    roundResultText.textContent = `Equality!\nHis ${robotoSelection} is equal to your ${playerSelection}`;
     playerPoints.parentElement.classList.remove('winner-point');
     robotoPoints.parentElement.classList.remove('winner-point');
     equality++;
   } else {
-    declaration.textContent = `You win this round!\nYour ${playerSelection} is better than his ${robotoSelection}`;
+    roundResultText.textContent = `You win this round!\nYour ${playerSelection} is better than his ${robotoSelection}`;
     playerPoints.parentElement.classList.add('winner-point');
     robotoPoints.parentElement.classList.remove('winner-point');
     playerPicture.classList.add('winner-img');
@@ -76,10 +89,10 @@ const playRound = (playerSelection, robotoSelection) => {
 
   populateResultTable(playerHandIcon, robotoHandIcon);
 
-  declaration.classList.remove('visible');
+  roundResultText.classList.remove('visible');
   setTimeout(() => {
-    declaration.classList.add('visible');
-  }, 0500);
+    roundResultText.classList.add('visible');
+  }, 0100);
 };
 
 const playTheGame = (e) => {
@@ -137,6 +150,7 @@ const newGame = () => {
   round = 0;
 
   winner.textContent = 'Choose a option:';
+  roundResultText.textContent = 'Choose a option:';
   playerPoints.parentElement.classList.remove('winner-point');
   robotoPoints.parentElement.classList.remove('winner-point');
   playerPoints.textContent = playerWin;
@@ -152,14 +166,26 @@ const newGame = () => {
 
   playerHand.removeChild(playerHand.firstChild);
 
-  playerPlaysTds.forEach((td) => {
+  playerPlays1Tds.forEach((td) => {
     // removeChild trow an error (argument 1 not an object) if in the loop without the hasChildNodes() as a condition
     if (td.hasChildNodes()) {
       td.removeChild(td.firstChild);
     }
     td.classList.remove('win-cell');
   });
-  robotoPlaysTds.forEach((td) => {
+  robotoPlays1Tds.forEach((td) => {
+    if (td.hasChildNodes()) {
+      td.removeChild(td.firstChild);
+    }
+    td.classList.remove('win-cell');
+  });
+  playerPlays2Tds.forEach((td) => {
+    if (td.hasChildNodes()) {
+      td.removeChild(td.firstChild);
+    }
+    td.classList.remove('win-cell');
+  });
+  robotoPlays2Tds.forEach((td) => {
     if (td.hasChildNodes()) {
       td.removeChild(td.firstChild);
     }
@@ -185,12 +211,17 @@ const optionsBtns = document.querySelectorAll('.button');
 optionsBtns.forEach((option) => option.addEventListener('click', playTheGame));
 
 // rounds result selection
-const declaration = document.querySelector('#round-result-text');
-const roundsTable = document.querySelector('#rounds-table');
-const playerPlays = roundsTable.querySelector('#player-plays');
-const playerPlaysTds = [...playerPlays.querySelectorAll('td')];
-const robotoPlays = roundsTable.querySelector('#roboto-plays');
-const robotoPlaysTds = [...robotoPlays.querySelectorAll('td')];
+const roundResultText = document.querySelector('#round-result-text');
+const roundsTable1 = document.querySelector('#rounds-table1');
+const roundsTable2 = document.querySelector('#rounds-table2');
+const playerPlays1 = roundsTable1.querySelector('.player-plays');
+const playerPlays2 = roundsTable2.querySelector('.player-plays');
+const playerPlays1Tds = [...playerPlays1.querySelectorAll('td')];
+const playerPlays2Tds = [...playerPlays2.querySelectorAll('td')];
+const robotoPlays1 = roundsTable1.querySelector('.roboto-plays');
+const robotoPlays2 = roundsTable2.querySelector('.roboto-plays');
+const robotoPlays1Tds = [...robotoPlays1.querySelectorAll('td')];
+const robotoPlays2Tds = [...robotoPlays2.querySelectorAll('td')];
 
 // init some variables
 let round = 0;
