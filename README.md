@@ -7,7 +7,12 @@ The [second Odin project](https://www.theodinproject.com/paths/foundations/cours
 CSS is used to add some design and UX (joyfull color theme, one color for each player, green for the winner, yellow for neutral information, dynamic animation on svg pictures) .
 
 ## Features
-<img src="screenshot.png" alt="screenshot" style="float: left;" height="400"/><img src="screenshot-mobile.png" alt="mobile screenshot" style="float: left; margin-left: 10px" height="400">
+<p align="center">
+<img src="screenshot.png" alt="screenshot" width="80%"/></p>
+
+<p align="center">
+<img src="screenshot-mobile.png" alt="mobile screenshot" style="float: center; margin-left: 10px" width="30%"></p>
+
 - The user plays on the browser,
 - A message is displayed for each round result
 - Each round is recorded in a table, 
