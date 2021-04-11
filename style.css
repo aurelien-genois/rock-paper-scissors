@@ -39,6 +39,7 @@ h1 {
 #game-container {
   margin: 0px auto;
   width: fit-content;
+  width: -moz-fit-content;
   padding: 20px 20px 40px 20px;
   border-radius: 30px 30px 100px 100px/ 30px 30px 50px 50px;
   background-color: var(--gray-gameboard);
@@ -254,6 +255,7 @@ h1 {
   border: var(--lightgray-gameboard) 5px inset;
   margin: 10px auto 0 auto;
   width: fit-content;
+  width: -moz-fit-content;
 }
 .rounds-tables {
   border-spacing: 0;
