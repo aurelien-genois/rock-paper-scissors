@@ -1,6 +1,6 @@
 # rock-paper-scissors
 
-[Live Demo](https://aurelien-genois.github.io/rock-paper-scissors/)
+<h2 align="center"><a  href="https://aurelien-genois.github.io/rock-paper-scissors/">Live Demo</a></h2>
 
 ## Description :
 The [second Odin project](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors) for practice bacic JavaScript (variables, data-types, conditionals, functions,...)
