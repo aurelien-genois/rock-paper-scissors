@@ -8,7 +8,7 @@ CSS is used to add some design and UX (joyfull color theme, one color for each p
 
 ## Features
 <p align="center">
-<img src="rock-paper-scissors-gif.gif" alt="screenshot" width="80%"/></p>
+<img src="rock-paper-scissors.gif" alt="screenshot" width="80%"/></p>
 
 - The user plays on the browser,
 - A message is displayed for each round result
