@@ -8,7 +8,7 @@ CSS is used to add some design and UX (joyfull color theme, one color for each p
 
 ## Features
 <p align="center">
-<img src="screenshot.png" alt="screenshot" width="80%"/></p>
+<img src="rock-paper-scissors-gif.gif" alt="screenshot" width="80%"/></p>
 
 <p align="center">
 <img src="screenshot-mobile.png" alt="mobile screenshot" style="float: center; margin-left: 10px" width="30%"></p>
