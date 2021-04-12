@@ -10,9 +10,6 @@ CSS is used to add some design and UX (joyfull color theme, one color for each p
 <p align="center">
 <img src="rock-paper-scissors-gif.gif" alt="screenshot" width="80%"/></p>
 
-<p align="center">
-<img src="screenshot-mobile.png" alt="mobile screenshot" style="float: center; margin-left: 10px" width="30%"></p>
-
 - The user plays on the browser,
 - A message is displayed for each round result
 - Each round is recorded in a table, 
@@ -21,3 +18,6 @@ CSS is used to add some design and UX (joyfull color theme, one color for each p
 
 ## challenges
 The organisation of the code in several functions and the DOM manipulation (expecially change textcontents and classes) were pretty new on this project. I also practiced css animation to render a more joyfull interface and visual feedacks. Adapting the layout to mobile was eventually interesting, in particular for divide the rounds table in two tables (one on top the other) for small width.
+
+<p align="center">
+<img src="screenshot-mobile.png" alt="mobile screenshot" style="float: center; margin-left: 10px" width="30%"></p>
