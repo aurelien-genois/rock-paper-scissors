@@ -3,7 +3,7 @@
 <h2 align="center"><a  href="https://aurelien-genois.github.io/rock-paper-scissors/">Live Demo</a></h2>
 
 ## Description
-The [second Odin project](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors) for practice bacic JavaScript (variables, data-types, conditionals, functions,...).
+The [second Odin project](https://www.theodinproject.com/paths/foundations/courses/foundations/lessons/rock-paper-scissors) is a rock-paper-scissors game for practice bacic JavaScript (variables, data-types, conditionals, functions,...).
 CSS is used to add some design and UX (joyfull color theme, one color for each player, green for the winner, yellow for neutral informations, dynamic animations on svg pictures) .
 
 ## Features
@@ -16,7 +16,7 @@ CSS is used to add some design and UX (joyfull color theme, one color for each p
 - Dynamic green color informs the user of the winner
 - A popup shows the game result after 5 wins or 20 rounds if no 5 wins
 
-## challenges
+## Challenges
 The organisation of the code in several functions and the DOM manipulation (expecially change textcontents and classes) were pretty new on this project. 
 
 I also practiced css animation to render a more joyfull interface and visual feedacks. 
