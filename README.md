@@ -17,7 +17,7 @@ CSS is used to add some design and UX (joyfull color theme, one color for each p
 - A popup shows the game result after 5 wins or 20 rounds if no 5 wins
 
 ## Challenges
-The organisation of the code in several functions and the DOM manipulation (expecially change textcontents and classes) were pretty new on this project. 
+The organisation of the code in several functions and the DOM manipulation (especially changing textcontents and classes) were the principals goals this project. 
 
 I also practiced css animation to render a more joyfull interface and visual feedacks. 
 
