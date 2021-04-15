@@ -20,6 +20,7 @@ body {
     url(https://i.pinimg.com/originals/c2/bc/a7/c2bca7dd6445461b871e1c164217b5ae.png);
   background-size: cover;
   background-attachment: fixed;
+  background-position: center;
   font-family: 'Dosis', sans-serif;
 }
 h1 {
