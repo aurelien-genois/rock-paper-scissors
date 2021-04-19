@@ -13,8 +13,6 @@
   outline: transparent none 0px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
-
 body {
   background-image: linear-gradient(to bottom, #ffffff3b, #ffffff3b),
     url(https://i.pinimg.com/originals/c2/bc/a7/c2bca7dd6445461b871e1c164217b5ae.png);
