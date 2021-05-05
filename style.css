@@ -20,10 +20,13 @@ body {
   background-attachment: fixed;
   background-position: center;
   font-family: 'Dosis', sans-serif;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 h1 {
   text-align: center;
-  margin: 20px 0;
+  margin: 10px 0;
   color: var(--yellow-gold);
   font-weight: bold;
   text-shadow: 3px 3px 4px black;
@@ -39,6 +42,7 @@ h1 {
   margin: 0px auto;
   width: fit-content;
   width: -moz-fit-content;
+  height: min-content;
   padding: 20px 20px 40px 20px;
   border-radius: 30px 30px 100px 100px/ 30px 30px 50px 50px;
   background-color: var(--gray-gameboard);
@@ -284,6 +288,32 @@ h1 {
   background-color: var(--green-winner);
 }
 
+/* footer */
+#footer {
+  background: black;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+#footer p {
+  text-align: center;
+  color: whitesmoke;
+  margin: 1rem auto;
+}
+#footer a {
+  color: var(--blue-roboto);
+  text-decoration: none;
+}
+#footer a:visited {
+  color: var(--orange-fofo);
+}
+#footer a:hover {
+  color: var(--yellow-gold);
+}
+
+/* responsive */
 @media (max-width: 675px) {
   #game-container {
     width: 90vw;
